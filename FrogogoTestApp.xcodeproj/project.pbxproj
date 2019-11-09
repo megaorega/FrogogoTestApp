@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67885A4E237747F200631F61 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67885A4D237747F200631F61 /* ContactCell.swift */; };
+		67885A5123774C2E00631F61 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67885A5023774C2E00631F61 /* Box.swift */; };
+		67885A5323774D2900631F61 /* ContactListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67885A5223774D2900631F61 /* ContactListViewModel.swift */; };
+		67885A5823774DF500631F61 /* DataEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67885A5723774DF500631F61 /* DataEvents.swift */; };
+		67885A5A23774E5300631F61 /* BaseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67885A5923774E5300631F61 /* BaseDataModel.swift */; };
+		67885A5C23774E7800631F61 /* BaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67885A5B23774E7800631F61 /* BaseDataManager.swift */; };
+		67885A602377507800631F61 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67885A5F2377507800631F61 /* ContactModel.swift */; };
+		67885A6223775E8600631F61 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67885A6123775E8600631F61 /* StringHelper.swift */; };
 		67F4570F2376D2BA001FD596 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4570E2376D2BA001FD596 /* AppDelegate.swift */; };
 		67F457112376D2BA001FD596 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F457102376D2BA001FD596 /* SceneDelegate.swift */; };
 		67F457162376D2BA001FD596 /* ContactList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67F457142376D2BA001FD596 /* ContactList.storyboard */; };
@@ -19,6 +27,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		67885A4D237747F200631F61 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
+		67885A5023774C2E00631F61 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		67885A5223774D2900631F61 /* ContactListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewModel.swift; sourceTree = "<group>"; };
+		67885A5723774DF500631F61 /* DataEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEvents.swift; sourceTree = "<group>"; };
+		67885A5923774E5300631F61 /* BaseDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDataModel.swift; sourceTree = "<group>"; };
+		67885A5B23774E7800631F61 /* BaseDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDataManager.swift; sourceTree = "<group>"; };
+		67885A5F2377507800631F61 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
+		67885A6123775E8600631F61 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		67F4570B2376D2BA001FD596 /* FrogogoTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrogogoTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67F4570E2376D2BA001FD596 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67F457102376D2BA001FD596 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +59,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67885A4F23774C0200631F61 /* utilities */ = {
+			isa = PBXGroup;
+			children = (
+				67885A5023774C2E00631F61 /* Box.swift */,
+				67885A6123775E8600631F61 /* StringHelper.swift */,
+			);
+			path = utilities;
+			sourceTree = "<group>";
+		};
+		67885A5423774DC000631F61 /* data models */ = {
+			isa = PBXGroup;
+			children = (
+				67885A5923774E5300631F61 /* BaseDataModel.swift */,
+				67885A5F2377507800631F61 /* ContactModel.swift */,
+			);
+			path = "data models";
+			sourceTree = "<group>";
+		};
+		67885A5523774DC600631F61 /* connectors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = connectors;
+			sourceTree = "<group>";
+		};
+		67885A5623774DCE00631F61 /* data managers */ = {
+			isa = PBXGroup;
+			children = (
+				67885A5B23774E7800631F61 /* BaseDataManager.swift */,
+			);
+			path = "data managers";
+			sourceTree = "<group>";
+		};
 		67F457022376D2BA001FD596 = {
 			isa = PBXGroup;
 			children = (
@@ -64,19 +113,24 @@
 			children = (
 				67F4570E2376D2BA001FD596 /* AppDelegate.swift */,
 				67F457102376D2BA001FD596 /* SceneDelegate.swift */,
-				67F457222376E190001FD596 /* data */,
+				67F457222376E190001FD596 /* model */,
 				67F457232376E1A8001FD596 /* screens */,
+				67885A4F23774C0200631F61 /* utilities */,
 				67F457172376D2BC001FD596 /* Assets.xcassets */,
 				67F4571C2376D2BC001FD596 /* Info.plist */,
 			);
 			path = FrogogoTestApp;
 			sourceTree = "<group>";
 		};
-		67F457222376E190001FD596 /* data */ = {
+		67F457222376E190001FD596 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				67885A5723774DF500631F61 /* DataEvents.swift */,
+				67885A5523774DC600631F61 /* connectors */,
+				67885A5623774DCE00631F61 /* data managers */,
+				67885A5423774DC000631F61 /* data models */,
 			);
-			path = data;
+			path = model;
 			sourceTree = "<group>";
 		};
 		67F457232376E1A8001FD596 /* screens */ = {
@@ -94,7 +148,9 @@
 		67F457242376E1CB001FD596 /* contact list screen */ = {
 			isa = PBXGroup;
 			children = (
+				67885A5223774D2900631F61 /* ContactListViewModel.swift */,
 				67F4572F2376E57B001FD596 /* ContactListViewController.swift */,
+				67885A4D237747F200631F61 /* ContactCell.swift */,
 			);
 			path = "contact list screen";
 			sourceTree = "<group>";
@@ -187,11 +243,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67885A5C23774E7800631F61 /* BaseDataManager.swift in Sources */,
+				67885A5323774D2900631F61 /* ContactListViewModel.swift in Sources */,
 				67F4570F2376D2BA001FD596 /* AppDelegate.swift in Sources */,
+				67885A5A23774E5300631F61 /* BaseDataModel.swift in Sources */,
+				67885A6223775E8600631F61 /* StringHelper.swift in Sources */,
 				67F457302376E57B001FD596 /* ContactListViewController.swift in Sources */,
+				67885A602377507800631F61 /* ContactModel.swift in Sources */,
 				67F4572E2376E3E4001FD596 /* BaseViewModel.swift in Sources */,
+				67885A5823774DF500631F61 /* DataEvents.swift in Sources */,
 				67F457112376D2BA001FD596 /* SceneDelegate.swift in Sources */,
 				67F4572C2376E3C4001FD596 /* BaseViewController.swift in Sources */,
+				67885A5123774C2E00631F61 /* Box.swift in Sources */,
+				67885A4E237747F200631F61 /* ContactCell.swift in Sources */,
 				67F457322376E58C001FD596 /* ContactEditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
