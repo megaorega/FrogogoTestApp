@@ -7,6 +7,10 @@ import UIKit
 
 class ContactEditViewController: BaseViewController {
     // MARK: - Properties
+    @IBOutlet var firstNameField:UITextField!
+    @IBOutlet var lastNameField:UITextField!
+    @IBOutlet var emailField:UITextField!
+    
     private let viewModel = ContactEditViewModel()
     
     
@@ -14,6 +18,20 @@ class ContactEditViewController: BaseViewController {
     // MARK: - Overridden methods
     override func createViewModel() {
         commonTypeViewModel = viewModel
+    }
+    
+    override func addBindings() {
+        super.addBindings()
+        
+        viewModel.firstName.bind { [unowned self] firstNameString in
+            self.firstNameField.text = firstNameString
+        }
+        viewModel.lastName.bind { [unowned self] lastNameString in
+            self.lastNameField.text = lastNameString
+        }
+        viewModel.email.bind { [unowned self] emailString in
+            self.emailField.text = emailString
+        }
     }
     
     

@@ -35,9 +35,8 @@ class ContactListViewModel: BaseViewModel {
     
     internal func triggerEditContact(_ contactModel:ContactModel) {
         passingObject = contactModel
-        print("Need to open edit for contact \(contactModel.fullName)")
-        // TODO: need to open edit contact screen with segue
-        // TODO: возможно здесь нужно будет занулить passingObject, чтобы при открывании экрана создания не передавалась модель
+        segueIdentifierToPerform.value = "segueFromContactListToEditContact"
+        passingObject = nil
     }
     
     

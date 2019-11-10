@@ -258,6 +258,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eRs-Vf-dF3"/>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="fmL-Cl-uyk" id="wty-8z-gMq"/>
+                        <outlet property="firstNameField" destination="HJA-Ti-LNP" id="6h2-Dr-u36"/>
+                        <outlet property="lastNameField" destination="Mvz-oQ-26q" id="ZTw-In-yJO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RIw-hN-rZD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

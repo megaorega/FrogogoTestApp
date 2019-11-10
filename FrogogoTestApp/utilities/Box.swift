@@ -30,7 +30,7 @@ class Box <T> {
     
     
     // MARK: - Custom open/public/internal methods
-    func bind(listener: Listener?) {
+    func bind(_ listener: Listener?) {
         self.listener = listener
         listener?(value)
     }
