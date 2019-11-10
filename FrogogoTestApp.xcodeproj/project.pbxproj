@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67562B1923779DD3000C60CB /* ContactEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67562B1823779DD3000C60CB /* ContactEditViewModel.swift */; };
 		67885A4E237747F200631F61 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67885A4D237747F200631F61 /* ContactCell.swift */; };
 		67885A5123774C2E00631F61 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67885A5023774C2E00631F61 /* Box.swift */; };
 		67885A5323774D2900631F61 /* ContactListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67885A5223774D2900631F61 /* ContactListViewModel.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		67562B1823779DD3000C60CB /* ContactEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactEditViewModel.swift; sourceTree = "<group>"; };
 		67885A4D237747F200631F61 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		67885A5023774C2E00631F61 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		67885A5223774D2900631F61 /* ContactListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewModel.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		67F457252376E1E0001FD596 /* contact edit screen */ = {
 			isa = PBXGroup;
 			children = (
+				67562B1823779DD3000C60CB /* ContactEditViewModel.swift */,
 				67F457312376E58C001FD596 /* ContactEditViewController.swift */,
 			);
 			path = "contact edit screen";
@@ -251,6 +254,7 @@
 				67F457302376E57B001FD596 /* ContactListViewController.swift in Sources */,
 				67885A602377507800631F61 /* ContactModel.swift in Sources */,
 				67F4572E2376E3E4001FD596 /* BaseViewModel.swift in Sources */,
+				67562B1923779DD3000C60CB /* ContactEditViewModel.swift in Sources */,
 				67885A5823774DF500631F61 /* DataEvents.swift in Sources */,
 				67F457112376D2BA001FD596 /* SceneDelegate.swift in Sources */,
 				67F4572C2376E3C4001FD596 /* BaseViewController.swift in Sources */,

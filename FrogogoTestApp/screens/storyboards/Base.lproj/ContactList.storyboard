@@ -15,9 +15,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bui-wH-vmF" userLabel="contactListTable">
-                                <rect key="frame" x="0.0" y="251" width="414" height="611"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jsb-QT-AvL" userLabel="navBar">
+                                <rect key="frame" x="0.0" y="44" width="414" height="71"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oc5-yV-c71" userLabel="titleLabel">
+                                        <rect key="frame" x="20" y="20" width="324" height="41"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2DC-uo-Ww2" userLabel="addContactBtn">
+                                        <rect key="frame" x="354" y="20.5" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="2DC-uo-Ww2" secondAttribute="height" multiplier="1:1" id="UlV-Aa-yBe"/>
+                                            <constraint firstAttribute="height" constant="40" id="y1y-ej-cW2"/>
+                                        </constraints>
+                                        <state key="normal" title="+"/>
+                                        <connections>
+                                            <action selector="addContactBtnDidTap" destination="BYZ-38-t0r" eventType="touchUpInside" id="b0b-PX-lp4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="2DC-uo-Ww2" firstAttribute="leading" secondItem="oc5-yV-c71" secondAttribute="trailing" constant="10" id="E8a-Sb-gro"/>
+                                    <constraint firstItem="2DC-uo-Ww2" firstAttribute="centerY" secondItem="oc5-yV-c71" secondAttribute="centerY" id="Tuj-Ir-QrT"/>
+                                    <constraint firstItem="oc5-yV-c71" firstAttribute="bottom" secondItem="Jsb-QT-AvL" secondAttribute="bottom" constant="-10" id="hNf-Ve-bcc"/>
+                                    <constraint firstItem="2DC-uo-Ww2" firstAttribute="trailing" secondItem="Jsb-QT-AvL" secondAttribute="trailing" constant="-20" id="iQh-iK-vPn"/>
+                                    <constraint firstItem="oc5-yV-c71" firstAttribute="leading" secondItem="Jsb-QT-AvL" secondAttribute="leading" constant="20" id="oqF-vB-1e5"/>
+                                    <constraint firstItem="oc5-yV-c71" firstAttribute="top" secondItem="Jsb-QT-AvL" secondAttribute="top" constant="20" id="t5H-vo-KfX"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bui-wH-vmF" userLabel="contactListTable">
+                                <rect key="frame" x="0.0" y="115" width="414" height="747"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ContactCellReuseID" rowHeight="136" id="xYJ-H0-7sQ" customClass="ContactCell" customModule="FrogogoTestApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="136"/>
@@ -27,7 +58,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="255" verticalHuggingPriority="255" translatesAutoresizingMaskIntoConstraints="NO" id="TQw-qW-l1D" userLabel="avatar">
-                                                    <rect key="frame" x="40" y="31" width="60" height="60"/>
+                                                    <rect key="frame" x="20" y="20" width="60" height="60"/>
                                                     <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="TQw-qW-l1D" secondAttribute="height" multiplier="1:1" id="OD1-Om-50q"/>
@@ -35,27 +66,28 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUp-Yc-6kH" userLabel="nameLabel">
-                                                    <rect key="frame" x="120" y="36" width="234" height="20.5"/>
+                                                    <rect key="frame" x="100" y="20" width="294" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6G-gm-lMv" userLabel="emailLabel">
-                                                    <rect key="frame" x="120" y="61.5" width="234" height="48.5"/>
+                                                    <rect key="frame" x="100" y="45.5" width="294" height="75.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="TQw-qW-l1D" firstAttribute="top" secondItem="TK3-Gx-6Ij" secondAttribute="topMargin" constant="20" id="2MK-JY-321"/>
-                                                <constraint firstItem="TQw-qW-l1D" firstAttribute="bottom" secondItem="TK3-Gx-6Ij" secondAttribute="bottomMargin" priority="999" constant="-20" id="4X5-mg-fXT"/>
+                                                <constraint firstItem="TQw-qW-l1D" firstAttribute="top" secondItem="TK3-Gx-6Ij" secondAttribute="top" constant="20" id="2MK-JY-321"/>
+                                                <constraint firstItem="TQw-qW-l1D" firstAttribute="bottom" secondItem="TK3-Gx-6Ij" secondAttribute="bottom" priority="999" constant="-56" id="4X5-mg-fXT"/>
                                                 <constraint firstItem="V6G-gm-lMv" firstAttribute="top" secondItem="OUp-Yc-6kH" secondAttribute="bottom" constant="5" id="Adx-vu-eVc"/>
-                                                <constraint firstItem="V6G-gm-lMv" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="TK3-Gx-6Ij" secondAttribute="bottomMargin" constant="-15" id="EiI-uO-z6x"/>
-                                                <constraint firstItem="TQw-qW-l1D" firstAttribute="leading" secondItem="TK3-Gx-6Ij" secondAttribute="leadingMargin" constant="20" id="RvX-Xx-gMg"/>
-                                                <constraint firstItem="OUp-Yc-6kH" firstAttribute="top" secondItem="TQw-qW-l1D" secondAttribute="top" constant="5" id="ZWy-TG-K71"/>
+                                                <constraint firstItem="V6G-gm-lMv" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="TK3-Gx-6Ij" secondAttribute="bottom" constant="-15" id="EiI-uO-z6x"/>
+                                                <constraint firstItem="TQw-qW-l1D" firstAttribute="leading" secondItem="TK3-Gx-6Ij" secondAttribute="leading" constant="20" id="RvX-Xx-gMg"/>
+                                                <constraint firstItem="OUp-Yc-6kH" firstAttribute="top" secondItem="TQw-qW-l1D" secondAttribute="top" id="ZWy-TG-K71"/>
                                                 <constraint firstItem="OUp-Yc-6kH" firstAttribute="leading" secondItem="TQw-qW-l1D" secondAttribute="trailing" constant="20" id="awH-q2-o11"/>
-                                                <constraint firstItem="OUp-Yc-6kH" firstAttribute="trailing" secondItem="TK3-Gx-6Ij" secondAttribute="trailingMargin" constant="-40" id="kcK-ZR-TK7"/>
+                                                <constraint firstItem="OUp-Yc-6kH" firstAttribute="trailing" secondItem="TK3-Gx-6Ij" secondAttribute="trailing" constant="-20" id="kcK-ZR-TK7"/>
                                                 <constraint firstItem="V6G-gm-lMv" firstAttribute="trailing" secondItem="OUp-Yc-6kH" secondAttribute="trailing" id="v5h-no-IVg"/>
                                                 <constraint firstItem="V6G-gm-lMv" firstAttribute="leading" secondItem="OUp-Yc-6kH" secondAttribute="leading" id="yWJ-zd-hWQ"/>
                                             </constraints>
@@ -73,37 +105,22 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="9Rv-zw-X7d"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" id="huC-0C-3dZ">
-                                <rect key="frame" x="49" y="111" width="283" height="140"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oc5-yV-c71">
-                                        <rect key="frame" x="20" y="20" width="243" height="100"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstItem="oc5-yV-c71" firstAttribute="top" secondItem="huC-0C-3dZ" secondAttribute="top" constant="20" id="BV5-LT-0To"/>
-                                    <constraint firstAttribute="trailing" secondItem="oc5-yV-c71" secondAttribute="trailing" constant="20" id="MJ5-uV-Tpx"/>
-                                    <constraint firstItem="oc5-yV-c71" firstAttribute="leading" secondItem="huC-0C-3dZ" secondAttribute="leading" constant="20" id="WT9-zL-ubB"/>
-                                    <constraint firstAttribute="bottom" secondItem="oc5-yV-c71" secondAttribute="bottom" constant="20" id="emb-rY-bls"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="bui-wH-vmF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2Z9-kI-04P"/>
-                            <constraint firstItem="bui-wH-vmF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="g1q-jW-Rxy"/>
-                            <constraint firstItem="bui-wH-vmF" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="tnm-lU-fl2"/>
-                            <constraint firstItem="bui-wH-vmF" firstAttribute="top" secondItem="huC-0C-3dZ" secondAttribute="bottom" id="xAa-0g-0OH"/>
+                            <constraint firstItem="bui-wH-vmF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IzR-q8-7nW"/>
+                            <constraint firstItem="Jsb-QT-AvL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Kpd-z7-04m"/>
+                            <constraint firstItem="bui-wH-vmF" firstAttribute="top" secondItem="Jsb-QT-AvL" secondAttribute="bottom" id="QXn-Fh-xiu"/>
+                            <constraint firstItem="Jsb-QT-AvL" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="d3X-96-Or6"/>
+                            <constraint firstItem="bui-wH-vmF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="gwj-bs-HQQ"/>
+                            <constraint firstItem="Jsb-QT-AvL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uKL-g3-WmY"/>
+                            <constraint firstItem="bui-wH-vmF" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="wTB-cB-4Ku"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="contactListTable" destination="bui-wH-vmF" id="fap-Ew-jXy"/>
+                        <segue destination="d1n-Oe-FKa" kind="presentation" identifier="segueFromContactListToEditContact" modalTransitionStyle="coverVertical" id="Xcr-Rp-VZB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -115,7 +132,7 @@
             <objects>
                 <viewController id="d1n-Oe-FKa" customClass="ContactEditViewController" customModule="FrogogoTestApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5hs-JD-tjA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="eRs-Vf-dF3"/>

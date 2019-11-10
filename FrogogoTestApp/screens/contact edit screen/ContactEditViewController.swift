@@ -6,11 +6,14 @@
 import UIKit
 
 class ContactEditViewController: BaseViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    // MARK: - Properties
+    private let viewModel = ContactEditViewModel()
+    
+    
+    
+    // MARK: - Overridden methods
+    override func createViewModel() {
+        commonTypeViewModel = viewModel
     }
     
 }
