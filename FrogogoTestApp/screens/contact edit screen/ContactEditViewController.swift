@@ -5,7 +5,7 @@
 
 import UIKit
 
-class ContactEditViewController: BaseViewController {
+class ContactEditViewController: BaseViewController, UITextFieldDelegate {
     // MARK: - Properties
     @IBOutlet var firstNameField:UITextField!
     @IBOutlet var lastNameField:UITextField!
@@ -36,10 +36,32 @@ class ContactEditViewController: BaseViewController {
     
     
     
+    // MARK: - Textfield delegate methods
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if (textField == firstNameField) {
+            lastNameField.becomeFirstResponder()
+        } else if (textField == lastNameField) {
+            emailField.becomeFirstResponder()
+        } else if (textField == emailField) {
+            handleSaveAttempt()
+        }
+        
+        return true
+    }
+    
+    
+    
+    // MARK: - Custom private methods
+    private func handleSaveAttempt() {
+        // TODO: need to call trigger method in viewModel
+        print("Trying to save contact edit")
+    }
+    
+    
+    
     // MARK: - IBActions and handlers
     @IBAction func handleSaveBtnTap() {
-        // TODO: need to call trigger method in viewModel
-        self.dismiss(animated: true, completion: nil)
+        handleSaveAttempt()
     }
     
     @IBAction func cancelBtnTap() {
