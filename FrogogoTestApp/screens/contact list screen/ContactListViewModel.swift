@@ -8,7 +8,7 @@ import UIKit
 class ContactListViewModel: BaseViewModel {
     // MARK: - Properties
     let contactList:Box<[ContactModel]> = Box(value: [])
-    let refreshStatus:Box<String> = Box(value: "")
+    let refreshStatusString:Box<String> = Box(value: "")
     let segueIdentifierToPerform: Box<String?> = Box(value: nil)
     
     
@@ -24,6 +24,7 @@ class ContactListViewModel: BaseViewModel {
     
     // MARK: - Custom open/public/internal methods
     internal func triggerContactsRefreshing() {
+        refreshStatusString.value = "updating..."
         // TODO: need to call real data manager for contact refreshing
         fakeFetchOfContacts()
     }
@@ -55,7 +56,7 @@ class ContactListViewModel: BaseViewModel {
         }
         
         // TODO: need to remove refresh status update below
-        refreshStatus.value = "updated now"
+        refreshStatusString.value = "updated now"
         contactList.value = fakeContactList
     }
 }

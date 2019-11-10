@@ -33,7 +33,7 @@ class ContactListViewController: BaseViewController, UITableViewDataSource, UITa
             guard let segueToPerform = segueID else { return }
             self.performSegue(withIdentifier: segueToPerform, sender: self)
         }
-        viewModel.refreshStatus.bind {[unowned self] newRefreshStatusString in
+        viewModel.refreshStatusString.bind {[unowned self] newRefreshStatusString in
             self.refreshControl.attributedTitle = NSAttributedString(string: newRefreshStatusString)
         }
         viewModel.contactList.bind {[unowned self] _ in
