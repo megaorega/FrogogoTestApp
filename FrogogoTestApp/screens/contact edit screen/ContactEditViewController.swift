@@ -16,4 +16,15 @@ class ContactEditViewController: BaseViewController {
         commonTypeViewModel = viewModel
     }
     
+    
+    
+    // MARK: - IBActions and handlers
+    @IBAction func handleSaveBtnTap() {
+        // TODO: need to call trigger method in viewModel
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func cancelBtnTap() {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

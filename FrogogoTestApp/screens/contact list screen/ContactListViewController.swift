@@ -87,17 +87,17 @@ class ContactListViewController: BaseViewController, UITableViewDataSource, UITa
     
     // MARK: - Custom private methods
     private func setupRefreshControl() {
-        refreshControl.addTarget(self, action: #selector(refreshControlHandler), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(handleRefreshControlTriggered), for: .valueChanged)
         contactListTable.refreshControl = refreshControl
     }
     
     
     
     // MARK: - IBActions and handlers
-    @IBAction func addContactBtnDidTap() {
+    @IBAction func handleAddContactBtnDidTap() {
         viewModel.triggerAddContact()
     }
-    @objc private func refreshControlHandler() {
+    @objc private func handleRefreshControlTriggered() {
         viewModel.triggerContactsRefreshing()
     }
 }
