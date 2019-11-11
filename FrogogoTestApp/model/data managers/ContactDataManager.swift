@@ -27,6 +27,7 @@ class ContactDataManager: BaseDataManager {
                 self.contactList = parsedContacts
                 
                 self.post(notification: .contactListFetchingOK, withPayload: self.contactList)
+                self.post(notification: .contactListUpdated, withPayload: self.contactList)
                 
             } else {
                 print("\(type(of: self)): Contact list receive failed!\n\(response!)")
@@ -50,11 +51,10 @@ class ContactDataManager: BaseDataManager {
                 print("\(type(of: self)): User created!")
                 
                 let createdContact = ContactModel(withJSON: response!)
-                
                 self.contactList.insert(createdContact, at: 0)
                 
                 self.post(notification: .contactCreationOK, withPayload: createdContact)
-                self.post(notification: .contactListFetchingOK, withPayload: self.contactList)
+                self.post(notification: .contactListUpdated, withPayload: self.contactList)
                 
             } else {
                 print("\(type(of: self)): User creation failed! Error: \(response!)")
@@ -80,6 +80,7 @@ class ContactDataManager: BaseDataManager {
                 
                 editedContact.update(withJSON: response!)
                 self.post(notification: .contactEditSaveOK, withPayload: editedContact)
+                self.post(notification: .contactListUpdated, withPayload: self.contactList)
                 
             } else {
                 print("\(type(of: self)): User changes save failed! Error: \(response!)")

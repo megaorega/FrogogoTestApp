@@ -27,6 +27,7 @@ class ContactListViewModel: BaseViewModel {
     override func subscribeForNotifications() {
         super.subscribeForNotifications()
         
+        subscribeFor(notification: .contactListUpdated, onComplete: #selector(handleNotifContactListUpdated))
         subscribeFor(notification: .contactListFetchingOK, onComplete: #selector(handleNotifContactListFetchingOK))
         subscribeFor(notification: .contactListFetchingFail, onComplete: #selector(handleNotifContactListFetchingFail))
     }
@@ -67,14 +68,18 @@ class ContactListViewModel: BaseViewModel {
     
     
     // MARK: - Notifications handling
-    @objc func handleNotifContactListFetchingOK(_ notification:Notification) {
+    @objc func handleNotifContactListUpdated(_ notification:Notification) {
         let updatedContactList = notification.userInfo![BaseDataManager.notificationPayloadKey] as! [ContactModel]
         contactList.value = updatedContactList
+        updateScreenTitle()
+        
         // TODO: need to make a string with timestamp to show update time
         refreshStatusString.value = ""
         //refreshStatusString.value = NSLocalizedString("up to date", comment:"Refresh control title for updated state")
-        refreshingActive.value    = false
-        updateScreenTitle()
+    }
+    
+    @objc func handleNotifContactListFetchingOK() {
+        refreshingActive.value = false
     }
     
     @objc func handleNotifContactListFetchingFail(_ notification:Notification) {
