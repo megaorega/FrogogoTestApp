@@ -13,12 +13,21 @@ class ContactDataManager: BaseDataManager {
     
     // MARK: - Custom open/public/internal methods
     func fetchContactList() {
-        print("Making fake contacts")
-        // TODO: need to send real request
-        let fakeContacts = generateFakeContacts()
-        // TODO: need to remove fake delay below
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {[unowned self] in
-            self.post(notification: .contactListFetchingOK, withPayload: fakeContacts)
+        APIConnector.shared.requestGET("users.json") {[unowned self] (isOK, response, error) in
+            
+            if (isOK) {
+                print("\(type(of: self)): Contact list received!")
+                var parsedContacts:[ContactModel] = []
+                for jsonData in response!.arrayValue {
+                    parsedContacts.append(ContactModel(withJSON: jsonData))
+                }
+                
+                self.post(notification: .contactListFetchingOK, withPayload: parsedContacts)
+                
+            } else {
+                print("\(type(of: self)): Contact list receive failed!\n\(error!)")
+                // TODO: need to handle error properly
+            }
         }
     }
     
@@ -46,24 +55,5 @@ class ContactDataManager: BaseDataManager {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {[unowned self] in
             self.post(notification: .contactEditSaveOK, withPayload: editedContact)
         }
-    }
-    
-    
-    
-    // MARK: - Custom private methods
-    // TODO: need to remove function below
-    private func generateFakeContacts() -> [ContactModel] {
-        var fakeContactList:[ContactModel] = []
-        
-        for i in 1...10 {
-            let newContact = ContactModel()
-            newContact.firstName    = "Константин"
-            newContact.lastName     = "Константинопольский"
-            newContact.email        = "emailemergentumenenen@gmail.com (\(i))"
-            newContact.avatarURL    = "https://avatars1.githubusercontent.com/u/5061990?s=200&v=4"
-            fakeContactList.append(newContact)
-        }
-        
-        return fakeContactList
     }
 }

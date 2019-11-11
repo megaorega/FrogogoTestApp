@@ -4,9 +4,11 @@
 // Copyright © 2019 Oleg Mosyagin. All rights reserved.
 
 import Foundation
+import SwiftyJSON
 
 class ContactModel: BaseDataModel {
     // MARK: - Properties
+    var id          = ""
     var firstName   = ""
     var lastName    = ""
     var email       = ""
@@ -22,4 +24,17 @@ class ContactModel: BaseDataModel {
         return nameToReturn
     }
     
+    
+    
+    // MARK: - Overridden methods
+    override func update(withJSON jsonData: JSON) {
+        super.update(withJSON: jsonData)
+        
+        id = jsonData["id"].stringValue
+        
+        firstName = jsonData["first_name"].stringValue
+        lastName  = jsonData["last_name"].stringValue
+        email     = jsonData["email"].stringValue
+        avatarURL = jsonData["avatar_url"].stringValue
+    }
 }
