@@ -119,6 +119,12 @@ class ContactEditViewController: BaseViewController, UITextFieldDelegate {
         }
     }
     
+    private func hideKeyboard() {
+        firstNameField.resignFirstResponder()
+        lastNameField.resignFirstResponder()
+        emailField.resignFirstResponder()
+    }
+    
     
     
     // MARK: - Textfield delegate methods
@@ -128,7 +134,7 @@ class ContactEditViewController: BaseViewController, UITextFieldDelegate {
         } else if (textField == lastNameField) {
             emailField.becomeFirstResponder()
         } else if (textField == emailField) {
-            viewModel.triggerSaveAttempt()
+            handleSaveBtnTap()
         }
         
         return true
@@ -147,6 +153,7 @@ class ContactEditViewController: BaseViewController, UITextFieldDelegate {
     
     @IBAction func handleSaveBtnTap() {
         viewModel.triggerSaveAttempt()
+        hideKeyboard()
     }
     
     @IBAction func handleCancelBtnTap() {
@@ -154,8 +161,6 @@ class ContactEditViewController: BaseViewController, UITextFieldDelegate {
     }
     
     @IBAction func handleEmptySpaceTap() {
-        firstNameField.resignFirstResponder()
-        lastNameField.resignFirstResponder()
-        emailField.resignFirstResponder()
+        hideKeyboard()
     }
 }
