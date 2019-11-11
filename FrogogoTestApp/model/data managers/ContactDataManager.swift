@@ -69,7 +69,7 @@ class ContactDataManager: BaseDataManager {
         let userDataDict = ["first_name": newFirstName,
                             "last_name" : newLastName,
                             "email"     : newEmail,
-                            "avatar_url": ""]
+                            "avatar_url": editedContact.avatarURL]
         let params = ["user": userDataDict]
         
         let addressToPatch = "users/\(editedContact.id).json"
