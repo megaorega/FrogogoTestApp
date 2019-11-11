@@ -9,40 +9,57 @@ class ContactDataManager: BaseDataManager {
     // MARK: - Properties
     static let shared = ContactDataManager()
     
+    private var contactList:[ContactModel] = []
+    
     
     
     // MARK: - Custom open/public/internal methods
     func fetchContactList() {
-        APIConnector.shared.requestGET("users.json") {[unowned self] (isOK, response, error) in
+        APIConnector.shared.requestGET("users.json") {[unowned self] (isOK, response) in
             
             if (isOK) {
                 print("\(type(of: self)): Contact list received!")
+                
                 var parsedContacts:[ContactModel] = []
                 for jsonData in response!.arrayValue {
                     parsedContacts.append(ContactModel(withJSON: jsonData))
                 }
+                self.contactList = parsedContacts
                 
-                self.post(notification: .contactListFetchingOK, withPayload: parsedContacts)
+                self.post(notification: .contactListFetchingOK, withPayload: self.contactList)
                 
             } else {
-                print("\(type(of: self)): Contact list receive failed!\n\(error!)")
+                print("\(type(of: self)): Contact list receive failed!\n\(response!)")
                 // TODO: need to handle error properly
+                self.post(notification: .contactListFetchingFail)
             }
         }
     }
     
     func createContactWith(firstName:String, lastName:String, andEmail email:String) {
-        print("Creating contact:")
-        print("\t" + firstName)
-        print("\t" + lastName)
-        print("\t" + email)
-        let createdContact = ContactModel()
-        createdContact.firstName = firstName
-        createdContact.lastName  = lastName
-        createdContact.email     = email
+        let userDataDict = ["first_name": firstName,
+                            "last_name" : lastName,
+                            "email"     : email,
+                            "avatar_url": ""]
+        let params       = ["user": userDataDict]
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {[unowned self] in
-            self.post(notification: .contactCreationOK, withPayload: createdContact)
+        APIConnector.shared.requestPOST("users.json", params: params) { (isOK, response) in
+            if (isOK) {
+                print("\(type(of: self)): User created!")
+                print(response!)
+                
+                let createdContact = ContactModel(withJSON: response!)
+                
+                self.contactList.insert(createdContact, at: 0)
+                
+                self.post(notification: .contactCreationOK, withPayload: createdContact)
+                self.post(notification: .contactListFetchingOK, withPayload: self.contactList)
+                
+            } else {
+                print("\(type(of: self)): User creation failed! Error: \(response!)")
+                // TODO: need to handle error properly
+                self.post(notification: .contactCreationFail)
+            }
         }
     }
     

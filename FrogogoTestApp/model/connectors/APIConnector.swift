@@ -9,7 +9,7 @@ import SwiftyJSON
 
 
 
-typealias CompleteHandler = (_ isOK:Bool, _ response:JSON?, _ error:Error?) -> Void
+typealias CompleteHandler = (_ isOK:Bool, _ response:JSON?) -> Void
 
 
 
@@ -21,23 +21,37 @@ class APIConnector {
     
     
     
-    func requestGET(_ address:String, params:[String:String]? = nil, completeHandler:@escaping CompleteHandler) {
-        
+    // MARK: - Custom open/public/internal methods
+    func requestGET(_ address:String, params:[String:Any]? = nil, completeHandler:@escaping CompleteHandler) {
         print("\(type(of: self)): sending GET request to \"\(address)\"")
+        sendRequest(to: address, withMethod: .get, params: nil, andCompleteHandler: completeHandler)
+    }
+    
+    func requestPOST(_ address:String, params:[String:Any], completeHandler:@escaping CompleteHandler) {
+        print("\(type(of: self)): sending POST request to \"\(address)\"")
+        sendRequest(to: address, withMethod: .post, params: params, andCompleteHandler: completeHandler)
+    }
+    
+    
+    
+    // MARK: - Custom private methods
+    private func sendRequest(to address:String, withMethod method:HTTPMethod, params:Parameters?, andCompleteHandler completeHandler:@escaping CompleteHandler) {
         
-        Alamofire.request(apiHost + "/" + address,
-                          method    : .get,
-                          parameters: params,
-                          encoding  : URLEncoding.methodDependent,
-                          headers   : nil)
+        request(apiHost + "/" + address,
+                method: method,
+                parameters: params,
+                encoding: URLEncoding.methodDependent,
+                headers: nil)
+            
             .responseJSON { (rawResponse) in
                 print("\(type(of: self)): Response from \"\(address)\" received")
                 
-                let response = JSON(rawResponse.data!)
-                let error = rawResponse.error
-                let isOK = (error == nil)
+                let statusCode = rawResponse.response!.statusCode
+                let isOK  = statusCode >= 200 && statusCode < 300
                 
-                completeHandler(isOK, response, error)
+                let response = JSON(rawResponse.data!)
+                
+                completeHandler(isOK, response)
         }
     }
 }
