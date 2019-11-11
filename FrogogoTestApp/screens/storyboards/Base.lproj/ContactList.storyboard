@@ -57,7 +57,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="136"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="255" verticalHuggingPriority="255" translatesAutoresizingMaskIntoConstraints="NO" id="TQw-qW-l1D" userLabel="avatar">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="255" verticalHuggingPriority="255" translatesAutoresizingMaskIntoConstraints="NO" id="TQw-qW-l1D" userLabel="avatar">
                                                     <rect key="frame" x="20" y="20" width="60" height="60"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -65,6 +65,9 @@
                                                         <constraint firstAttribute="width" secondItem="TQw-qW-l1D" secondAttribute="height" multiplier="1:1" id="OD1-Om-50q"/>
                                                         <constraint firstAttribute="width" constant="60" id="qf8-18-Lb1"/>
                                                     </constraints>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_round_frame" translatesAutoresizingMaskIntoConstraints="NO" id="xxE-uS-4bq" userLabel="roundFrame" customClass="avatar_round_frame">
+                                                    <rect key="frame" x="20" y="20" width="60" height="60"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUp-Yc-6kH" userLabel="nameLabel">
                                                     <rect key="frame" x="90" y="20" width="304" height="20.5"/>
@@ -84,11 +87,15 @@
                                                 <constraint firstItem="TQw-qW-l1D" firstAttribute="top" secondItem="TK3-Gx-6Ij" secondAttribute="top" constant="20" id="2MK-JY-321"/>
                                                 <constraint firstItem="TQw-qW-l1D" firstAttribute="bottom" secondItem="TK3-Gx-6Ij" secondAttribute="bottom" priority="999" constant="-56" id="4X5-mg-fXT"/>
                                                 <constraint firstItem="V6G-gm-lMv" firstAttribute="top" secondItem="OUp-Yc-6kH" secondAttribute="bottom" constant="5" id="Adx-vu-eVc"/>
+                                                <constraint firstItem="xxE-uS-4bq" firstAttribute="trailing" secondItem="TQw-qW-l1D" secondAttribute="trailing" id="DfC-NE-SfK"/>
                                                 <constraint firstItem="V6G-gm-lMv" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="TK3-Gx-6Ij" secondAttribute="bottom" constant="-15" id="EiI-uO-z6x"/>
+                                                <constraint firstItem="xxE-uS-4bq" firstAttribute="top" secondItem="TQw-qW-l1D" secondAttribute="top" id="HIS-qz-GPX"/>
                                                 <constraint firstItem="TQw-qW-l1D" firstAttribute="leading" secondItem="TK3-Gx-6Ij" secondAttribute="leading" constant="20" id="RvX-Xx-gMg"/>
                                                 <constraint firstItem="OUp-Yc-6kH" firstAttribute="top" secondItem="TQw-qW-l1D" secondAttribute="top" id="ZWy-TG-K71"/>
                                                 <constraint firstItem="OUp-Yc-6kH" firstAttribute="leading" secondItem="TQw-qW-l1D" secondAttribute="trailing" constant="10" id="awH-q2-o11"/>
+                                                <constraint firstItem="xxE-uS-4bq" firstAttribute="bottom" secondItem="TQw-qW-l1D" secondAttribute="bottom" id="gPm-ko-pjR"/>
                                                 <constraint firstItem="OUp-Yc-6kH" firstAttribute="trailing" secondItem="TK3-Gx-6Ij" secondAttribute="trailing" constant="-20" id="kcK-ZR-TK7"/>
+                                                <constraint firstItem="xxE-uS-4bq" firstAttribute="leading" secondItem="TQw-qW-l1D" secondAttribute="leading" id="lXq-ah-0C7"/>
                                                 <constraint firstItem="V6G-gm-lMv" firstAttribute="trailing" secondItem="OUp-Yc-6kH" secondAttribute="trailing" id="v5h-no-IVg"/>
                                                 <constraint firstItem="V6G-gm-lMv" firstAttribute="leading" secondItem="OUp-Yc-6kH" secondAttribute="leading" id="yWJ-zd-hWQ"/>
                                             </constraints>
@@ -340,6 +347,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="avatar_round_frame" width="60" height="60"/>
         <image name="checkmark.circle" catalog="system" width="64" height="60"/>
         <image name="exclamationmark.circle" catalog="system" width="64" height="60"/>
         <image name="plus" catalog="system" width="64" height="56"/>
