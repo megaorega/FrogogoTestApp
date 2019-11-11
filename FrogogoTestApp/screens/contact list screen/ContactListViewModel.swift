@@ -65,12 +65,19 @@ class ContactListViewModel: BaseViewModel {
         screenTitle.value = updatedScreenTitle
     }
     
+    private func sortContactsByUpdateDate() {
+        self.contactList.value.sort { (oneContact, otherContact) -> Bool in
+            return oneContact.updated! > otherContact.updated!
+        }
+    }
+    
     
     
     // MARK: - Notifications handling
     @objc func handleNotifContactListUpdated(_ notification:Notification) {
         let updatedContactList = notification.userInfo![BaseDataManager.notificationPayloadKey] as! [ContactModel]
         contactList.value = updatedContactList
+        sortContactsByUpdateDate()
         updateScreenTitle()
         
         let dateFormatter = DateFormatter()
