@@ -43,10 +43,10 @@ class ContactEditViewModel: BaseViewModel {
         if let passedContactModel = value as! ContactModel? {
             currentModel = passedContactModel
             setContactModelDataToDisplay()
-            screenTitle.value = "Edit contact"
+            screenTitle.value = NSLocalizedString("Edit contact", comment:"Edit contact screen title")
             
         } else {
-            screenTitle.value = "Add contact"
+            screenTitle.value = NSLocalizedString("Add contact", comment:"Contact creation screen title")
         }
     }
     
@@ -156,25 +156,25 @@ class ContactEditViewModel: BaseViewModel {
     
     // MARK: - Notification handlers
     @objc func handleNotifContactCreationOK() {
-        processingMessage.value = "New contact was created"
+        processingMessage.value = NSLocalizedString("New contact was created", comment:"New contact creation success message")
         processingState.value = .success
     }
     
     @objc func handleNotifContactCreationFail(_ notif:Notification) {
         // TODO: need to show real error message
-        processingMessage.value = "Failed to create contact"
+        processingMessage.value = NSLocalizedString("Failed to create contact", comment:"New contact creation fail message")
         processingState.value = .error
         resetProcessingState(after: .seconds(3))
     }
     
     @objc func handleNotifContactEditOK() {
-        processingMessage.value = "Changes was saved"
+        processingMessage.value = NSLocalizedString("Changes was saved", comment:"Contact edit success message")
         processingState.value = .success
     }
     
     @objc func handleNotifContactEditFail(_ notif:Notification) {
         // TODO: need to show real error message
-        processingMessage.value = "Failed to save changes"
+        processingMessage.value = NSLocalizedString("Failed to save changes", comment:"Contact edit fail message")
         processingState.value = .error
         resetProcessingState(after: .seconds(3))
     }

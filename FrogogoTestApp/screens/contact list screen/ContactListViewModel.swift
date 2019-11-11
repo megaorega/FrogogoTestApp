@@ -55,7 +55,7 @@ class ContactListViewModel: BaseViewModel {
     
     // MARK: - Custom private methods
     private func updateScreenTitle() {
-        var updatedScreenTitle = "Contacts"
+        var updatedScreenTitle = NSLocalizedString("Contacts", comment:"Contact list screen title")
         
         let contactListCount = contactList.value.count
         if (contactListCount > 0) {
