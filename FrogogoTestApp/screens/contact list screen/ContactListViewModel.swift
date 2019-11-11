@@ -73,9 +73,10 @@ class ContactListViewModel: BaseViewModel {
         contactList.value = updatedContactList
         updateScreenTitle()
         
-        // TODO: need to make a string with timestamp to show update time
-        refreshStatusString.value = ""
-        //refreshStatusString.value = NSLocalizedString("up to date", comment:"Refresh control title for updated state")
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "H:mm"
+        let readableUpdateTime = dateFormatter.string(from: Date())
+        refreshStatusString.value = NSLocalizedString("updated at ", comment:"Refreshing control title for updated state") + readableUpdateTime
     }
     
     @objc func handleNotifContactListFetchingOK() {
