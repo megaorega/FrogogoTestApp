@@ -41,12 +41,11 @@ class ContactDataManager: BaseDataManager {
                             "last_name" : lastName,
                             "email"     : email,
                             "avatar_url": ""]
-        let params       = ["user": userDataDict]
+        let params = ["user": userDataDict]
         
-        APIConnector.shared.requestPOST("users.json", params: params) { (isOK, response) in
+        APIConnector.shared.requestPOST("users.json", params: params) {[unowned self] (isOK, response) in
             if (isOK) {
                 print("\(type(of: self)): User created!")
-                print(response!)
                 
                 let createdContact = ContactModel(withJSON: response!)
                 
@@ -64,13 +63,27 @@ class ContactDataManager: BaseDataManager {
     }
     
     func save(newFirstName:String, newLastName:String, andNewEmail newEmail:String, forContact editedContact:ContactModel) {
-        print("Saving contact data")
-        editedContact.firstName = newFirstName
-        editedContact.lastName  = newLastName
-        editedContact.email     = newEmail
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {[unowned self] in
-            self.post(notification: .contactEditSaveOK, withPayload: editedContact)
+        let userDataDict = ["first_name": newFirstName,
+                            "last_name" : newLastName,
+                            "email"     : newEmail,
+                            "avatar_url": ""]
+        let params = ["user": userDataDict]
+        
+        let addressToPatch = "users/\(editedContact.id).json"
+        
+        APIConnector.shared.requestPATCH(addressToPatch, params: params) {[unowned self] (isOK, response) in
+            if (isOK) {
+                print("\(type(of: self)): User changes saved!")
+                
+                editedContact.update(withJSON: response!)
+                self.post(notification: .contactEditSaveOK, withPayload: editedContact)
+                
+            } else {
+                print("\(type(of: self)): User changes save failed! Error: \(response!)")
+                // TODO: need to handle error properly
+                self.post(notification: .contactEditSaveFail)
+            }
         }
     }
 }

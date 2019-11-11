@@ -32,6 +32,11 @@ class APIConnector {
         sendRequest(to: address, withMethod: .post, params: params, andCompleteHandler: completeHandler)
     }
     
+    func requestPATCH(_ address:String, params:[String:Any], completeHandler:@escaping CompleteHandler) {
+        print("\(type(of: self)): sending PATCH request to \"\(address)\"")
+        sendRequest(to: address, withMethod: .patch, params: params, andCompleteHandler: completeHandler)
+    }
+    
     
     
     // MARK: - Custom private methods
