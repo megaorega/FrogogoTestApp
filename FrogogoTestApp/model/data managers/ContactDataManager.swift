@@ -37,10 +37,12 @@ class ContactDataManager: BaseDataManager {
     }
     
     func createContactWith(firstName:String, lastName:String, andEmail email:String) {
+        let randomAvatarURL = "https://i.pravatar.cc/180?u=" + UUID().uuidString
+        
         let userDataDict = ["first_name": firstName,
                             "last_name" : lastName,
                             "email"     : email,
-                            "avatar_url": ""]
+                            "avatar_url": randomAvatarURL]
         let params = ["user": userDataDict]
         
         APIConnector.shared.requestPOST("users.json", params: params) {[unowned self] (isOK, response) in
