@@ -6,6 +6,14 @@
 import Foundation
 
 extension String {
+    var isValidFirstName: Bool {
+        return !self.isEmpty
+    }
+    
+    var isValidLastName: Bool {
+        return !self.isEmpty
+    }
+    
     var isValidEmail: Bool {
         do {
             let regex = try NSRegularExpression(pattern: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{1,}", options: .caseInsensitive)

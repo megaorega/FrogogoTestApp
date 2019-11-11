@@ -8,8 +8,12 @@ import UIKit
 class ContactEditViewController: BaseViewController, UITextFieldDelegate {
     // MARK: - Properties
     @IBOutlet var firstNameField:UITextField!
+    @IBOutlet var firstNameFieldHint:UILabel!
     @IBOutlet var lastNameField:UITextField!
+    @IBOutlet var lastNameFieldHint:UILabel!
     @IBOutlet var emailField:UITextField!
+    @IBOutlet var emailFieldHint:UILabel!
+    @IBOutlet var saveButton:UIButton!
     
     private let viewModel = ContactEditViewModel()
     
@@ -26,11 +30,58 @@ class ContactEditViewController: BaseViewController, UITextFieldDelegate {
         viewModel.firstName.bind { [unowned self] firstNameString in
             self.firstNameField.text = firstNameString
         }
+        viewModel.showFirstNameAsInvalid.bind {[unowned self] needToShowAsInvalid in
+            self.markTextFor(textField:     self.firstNameField,
+                             useSwitchHint: self.firstNameFieldHint,
+                             asInvalid:     needToShowAsInvalid)
+        }
+        
         viewModel.lastName.bind { [unowned self] lastNameString in
             self.lastNameField.text = lastNameString
         }
+        viewModel.showLastNameAsInvalid.bind {[unowned self] needToShowAsInvalid in
+            self.markTextFor(textField:     self.lastNameField,
+                             useSwitchHint: self.lastNameFieldHint,
+                             asInvalid:     needToShowAsInvalid)
+        }
+        
         viewModel.email.bind { [unowned self] emailString in
             self.emailField.text = emailString
+        }
+        viewModel.showEmailAsInvalid.bind {[unowned self] needToShowAsInvalid in
+            self.markTextFor(textField:     self.emailField,
+                             useSwitchHint: self.emailFieldHint,
+                             asInvalid:     needToShowAsInvalid)
+        }
+        
+        viewModel.saveButtonShouldBeEnabled.bind {[unowned self] needToEnable in
+            self.saveButton.isEnabled = needToEnable
+        }
+    }
+    
+    
+    
+    // MARK: - Custom private methods
+    private func handleTextChangeOf(_ textField:UITextField) {
+        if (textField == firstNameField) {
+            viewModel.updateEnteredFirstName(with: textField.text)
+        } else if (textField == lastNameField) {
+            viewModel.updateEnteredLastName(with: textField.text)
+        } else if (textField == emailField) {
+            viewModel.updateEnteredEmail(with: textField.text)
+        }
+    }
+    
+    private func markTextFor(textField:UITextField, useSwitchHint hintLabel:UILabel, asInvalid needToShowAsInvalid:Bool) {
+        
+        if (needToShowAsInvalid) {
+            if (!textField.isFirstResponder) {
+                hintLabel.isHidden = false
+                textField.shakeAsInvalid()
+            }
+            
+        } else {
+            hintLabel.isHidden = true
         }
     }
     
@@ -43,28 +94,34 @@ class ContactEditViewController: BaseViewController, UITextFieldDelegate {
         } else if (textField == lastNameField) {
             emailField.becomeFirstResponder()
         } else if (textField == emailField) {
-            handleSaveAttempt()
+            viewModel.triggerSaveAttempt()
         }
         
         return true
     }
     
-    
-    
-    // MARK: - Custom private methods
-    private func handleSaveAttempt() {
-        // TODO: need to call trigger method in viewModel
-        print("Trying to save contact edit")
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        handleTextChangeOf(textField)
     }
     
     
     
     // MARK: - IBActions and handlers
-    @IBAction func handleSaveBtnTap() {
-        handleSaveAttempt()
+    @IBAction func handleTextChange(in textField:UITextField) {
+        handleTextChangeOf(textField)
     }
     
-    @IBAction func cancelBtnTap() {
-        self.dismiss(animated: true, completion: nil)
+    @IBAction func handleSaveBtnTap() {
+        viewModel.triggerSaveAttempt()
+    }
+    
+    @IBAction func handleCancelBtnTap() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func handleEmptySpaceTap() {
+        firstNameField.resignFirstResponder()
+        lastNameField.resignFirstResponder()
+        emailField.resignFirstResponder()
     }
 }

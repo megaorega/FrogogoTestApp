@@ -15,7 +15,8 @@
 		67885A5A23774E5300631F61 /* BaseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67885A5923774E5300631F61 /* BaseDataModel.swift */; };
 		67885A5C23774E7800631F61 /* BaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67885A5B23774E7800631F61 /* BaseDataManager.swift */; };
 		67885A602377507800631F61 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67885A5F2377507800631F61 /* ContactModel.swift */; };
-		67885A6223775E8600631F61 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67885A6123775E8600631F61 /* StringHelper.swift */; };
+		67885A6223775E8600631F61 /* StringValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67885A6123775E8600631F61 /* StringValidation.swift */; };
+		67B076352378169E00218B99 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B076342378169E00218B99 /* Animations.swift */; };
 		67F4570F2376D2BA001FD596 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4570E2376D2BA001FD596 /* AppDelegate.swift */; };
 		67F457112376D2BA001FD596 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F457102376D2BA001FD596 /* SceneDelegate.swift */; };
 		67F457162376D2BA001FD596 /* ContactList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67F457142376D2BA001FD596 /* ContactList.storyboard */; };
@@ -36,7 +37,8 @@
 		67885A5923774E5300631F61 /* BaseDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDataModel.swift; sourceTree = "<group>"; };
 		67885A5B23774E7800631F61 /* BaseDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDataManager.swift; sourceTree = "<group>"; };
 		67885A5F2377507800631F61 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
-		67885A6123775E8600631F61 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
+		67885A6123775E8600631F61 /* StringValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValidation.swift; sourceTree = "<group>"; };
+		67B076342378169E00218B99 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		67F4570B2376D2BA001FD596 /* FrogogoTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrogogoTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67F4570E2376D2BA001FD596 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67F457102376D2BA001FD596 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +67,8 @@
 			isa = PBXGroup;
 			children = (
 				67885A5023774C2E00631F61 /* Box.swift */,
-				67885A6123775E8600631F61 /* StringHelper.swift */,
+				67885A6123775E8600631F61 /* StringValidation.swift */,
+				67B076342378169E00218B99 /* Animations.swift */,
 			);
 			path = utilities;
 			sourceTree = "<group>";
@@ -250,7 +253,7 @@
 				67885A5323774D2900631F61 /* ContactListViewModel.swift in Sources */,
 				67F4570F2376D2BA001FD596 /* AppDelegate.swift in Sources */,
 				67885A5A23774E5300631F61 /* BaseDataModel.swift in Sources */,
-				67885A6223775E8600631F61 /* StringHelper.swift in Sources */,
+				67885A6223775E8600631F61 /* StringValidation.swift in Sources */,
 				67F457302376E57B001FD596 /* ContactListViewController.swift in Sources */,
 				67885A602377507800631F61 /* ContactModel.swift in Sources */,
 				67F4572E2376E3E4001FD596 /* BaseViewModel.swift in Sources */,
@@ -260,6 +263,7 @@
 				67F4572C2376E3C4001FD596 /* BaseViewController.swift in Sources */,
 				67885A5123774C2E00631F61 /* Box.swift in Sources */,
 				67885A4E237747F200631F61 /* ContactCell.swift in Sources */,
+				67B076352378169E00218B99 /* Animations.swift in Sources */,
 				67F457322376E58C001FD596 /* ContactEditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
