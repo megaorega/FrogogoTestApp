@@ -3,7 +3,7 @@
 //
 // Copyright © 2019 Oleg Mosyagin. All rights reserved.
 
-import UIKit
+import Foundation
 
 class ContactEditViewModel: BaseViewModel {
     // MARK: - Properties

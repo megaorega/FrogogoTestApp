@@ -3,7 +3,7 @@
 //
 // Copyright © 2019 Oleg Mosyagin. All rights reserved.
 
-import UIKit
+import Foundation
 
 class ContactListViewModel: BaseViewModel {
     // MARK: - Properties
@@ -25,6 +25,7 @@ class ContactListViewModel: BaseViewModel {
         super.subscribeForNotifications()
         
         subscribeFor(notification: .contactListFetchingOK, onComplete: #selector(handleNotifContactListFetchingOK))
+        subscribeFor(notification: .contactListFetchingFail, onComplete: #selector(handleNotifContactListFetchingFail))
     }
     
     
@@ -58,4 +59,7 @@ class ContactListViewModel: BaseViewModel {
         refreshingActive.value    = false
     }
     
+    @objc func handleNotifContactListFetchingFail(_ notification:Notification) {
+        print("Need to show error of contact list fetching")
+    }
 }

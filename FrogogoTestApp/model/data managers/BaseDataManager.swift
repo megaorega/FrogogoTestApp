@@ -5,7 +5,6 @@
 
 import Foundation
 
-
 class BaseDataManager {
     // MARK: - Properties
     static let notificationPayloadKey = "payload"
