@@ -9,6 +9,7 @@ class ContactListViewModel: BaseViewModel {
     // MARK: - Properties
     let contactList:Box<[ContactModel]> = Box(value: [])
     let refreshStatusString:Box<String> = Box(value: "")
+    let refreshingActive:Box<Bool>      = Box(value: false)
     let segueIdentifierToPerform: Box<String?> = Box(value: nil)
     
     
@@ -17,16 +18,22 @@ class ContactListViewModel: BaseViewModel {
     override func viewWillAppearTrigger() {
         super.viewWillAppearTrigger()
         
-        fakeFetchOfContacts()
+        triggerContactsRefreshing()
+    }
+    
+    override func subscribeForNotifications() {
+        super.subscribeForNotifications()
+        
+        subscribeFor(notification: .contactListFetchingOK, onComplete: #selector(handleNotifContactListFetchingOK))
     }
     
     
     
     // MARK: - Custom open/public/internal methods
     internal func triggerContactsRefreshing() {
-        refreshStatusString.value = "updating..."
-        // TODO: need to call real data manager for contact refreshing
-        fakeFetchOfContacts()
+        refreshStatusString.value = NSLocalizedString("updating...", comment: "Refresh control title at loading state")
+        refreshingActive.value    = true
+        ContactDataManager.shared.fetchContactList()
     }
     
     internal func triggerAddContact() {
@@ -41,21 +48,14 @@ class ContactListViewModel: BaseViewModel {
     
     
     
-    // MARK: - Custom private methods
-    private func fakeFetchOfContacts() {
-        var fakeContactList:[ContactModel] = []
-        
-        for i in 1...10 {
-            let newContact = ContactModel()
-            newContact.firstName    = "Константин"
-            newContact.lastName     = "Константинопольский"
-            newContact.email        = "emailemergentumenenen@gmail.com (\(i))"
-            newContact.avatarURL    = "https://avatars1.githubusercontent.com/u/5061990?s=200&v=4"
-            fakeContactList.append(newContact)
-        }
-        
-        // TODO: need to remove refresh status update below
-        refreshStatusString.value = "updated now"
-        contactList.value = fakeContactList
+    // MARK: - Notifications handling
+    @objc func handleNotifContactListFetchingOK(_ notification:Notification) {
+        let updatedContactList = notification.userInfo![BaseDataManager.notificationPayloadKey] as! [ContactModel]
+        contactList.value = updatedContactList
+        // TODO: need to make a string with timestamp to show update time
+        refreshStatusString.value = ""
+        //refreshStatusString.value = NSLocalizedString("up to date", comment:"Refresh control title for updated state")
+        refreshingActive.value    = false
     }
+    
 }

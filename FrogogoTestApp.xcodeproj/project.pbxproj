@@ -17,6 +17,7 @@
 		67885A602377507800631F61 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67885A5F2377507800631F61 /* ContactModel.swift */; };
 		67885A6223775E8600631F61 /* StringValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67885A6123775E8600631F61 /* StringValidation.swift */; };
 		67B076352378169E00218B99 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B076342378169E00218B99 /* Animations.swift */; };
+		67B076372379171800218B99 /* ContactDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B076362379171800218B99 /* ContactDataManager.swift */; };
 		67F4570F2376D2BA001FD596 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4570E2376D2BA001FD596 /* AppDelegate.swift */; };
 		67F457112376D2BA001FD596 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F457102376D2BA001FD596 /* SceneDelegate.swift */; };
 		67F457162376D2BA001FD596 /* ContactList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67F457142376D2BA001FD596 /* ContactList.storyboard */; };
@@ -39,6 +40,7 @@
 		67885A5F2377507800631F61 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
 		67885A6123775E8600631F61 /* StringValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValidation.swift; sourceTree = "<group>"; };
 		67B076342378169E00218B99 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
+		67B076362379171800218B99 /* ContactDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDataManager.swift; sourceTree = "<group>"; };
 		67F4570B2376D2BA001FD596 /* FrogogoTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrogogoTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67F4570E2376D2BA001FD596 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67F457102376D2BA001FD596 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				67885A5B23774E7800631F61 /* BaseDataManager.swift */,
+				67B076362379171800218B99 /* ContactDataManager.swift */,
 			);
 			path = "data managers";
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				67562B1923779DD3000C60CB /* ContactEditViewModel.swift in Sources */,
 				67885A5823774DF500631F61 /* DataEvents.swift in Sources */,
 				67F457112376D2BA001FD596 /* SceneDelegate.swift in Sources */,
+				67B076372379171800218B99 /* ContactDataManager.swift in Sources */,
 				67F4572C2376E3C4001FD596 /* BaseViewController.swift in Sources */,
 				67885A5123774C2E00631F61 /* Box.swift in Sources */,
 				67885A4E237747F200631F61 /* ContactCell.swift in Sources */,

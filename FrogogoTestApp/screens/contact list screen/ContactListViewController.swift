@@ -36,11 +36,19 @@ class ContactListViewController: BaseViewController, UITableViewDataSource, UITa
         viewModel.refreshStatusString.bind {[unowned self] newRefreshStatusString in
             self.refreshControl.attributedTitle = NSAttributedString(string: newRefreshStatusString)
         }
+        viewModel.refreshingActive.bind {[unowned self] isRefreshing in
+            if (isRefreshing) {
+                self.refreshControl.beginRefreshing()
+            } else {
+                self.refreshControl.endRefreshing()
+            }
+        }
         viewModel.contactList.bind {[unowned self] _ in
             self.contactListTable.reloadData()
-            self.refreshControl.endRefreshing()
         }
     }
+    
+    
     
     
     
