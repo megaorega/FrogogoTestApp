@@ -7,6 +7,8 @@ import UIKit
 
 class ContactEditViewController: BaseViewController, UITextFieldDelegate {
     // MARK: - Properties
+    @IBOutlet var screenTitleLabel:UILabel!
+    
     @IBOutlet var firstNameField:UITextField!
     @IBOutlet var firstNameFieldHint:UILabel!
     @IBOutlet var lastNameField:UITextField!
@@ -31,6 +33,10 @@ class ContactEditViewController: BaseViewController, UITextFieldDelegate {
     
     override func addBindings() {
         super.addBindings()
+        
+        viewModel.screenTitle.bind {[unowned self] newScreenTitle in
+            self.screenTitleLabel.text = newScreenTitle
+        }
         
         viewModel.firstName.bind { [unowned self] firstNameString in
             self.firstNameField.text = firstNameString

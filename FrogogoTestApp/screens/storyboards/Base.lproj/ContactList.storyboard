@@ -143,7 +143,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6gb-N1-Qe4">
-                                <rect key="frame" x="20" y="81" width="374" height="388"/>
+                                <rect key="frame" x="20" y="91" width="374" height="388"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HJA-Ti-LNP" userLabel="firstNameField">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="35"/>
@@ -304,7 +304,7 @@
                             <constraint firstItem="wXx-Rq-yEM" firstAttribute="centerY" secondItem="bRs-Gc-s0H" secondAttribute="centerY" id="IOb-ct-AUd"/>
                             <constraint firstItem="wXx-Rq-yEM" firstAttribute="trailing" secondItem="eRs-Vf-dF3" secondAttribute="trailing" constant="-15" id="M8L-y9-RJ1"/>
                             <constraint firstItem="bRs-Gc-s0H" firstAttribute="top" secondItem="eRs-Vf-dF3" secondAttribute="top" constant="20" id="OTF-87-0sX"/>
-                            <constraint firstItem="6gb-N1-Qe4" firstAttribute="top" secondItem="bRs-Gc-s0H" secondAttribute="bottom" constant="20" id="SLj-jS-ryt"/>
+                            <constraint firstItem="6gb-N1-Qe4" firstAttribute="top" secondItem="bRs-Gc-s0H" secondAttribute="bottom" constant="30" id="SLj-jS-ryt"/>
                             <constraint firstItem="bRs-Gc-s0H" firstAttribute="leading" secondItem="eRs-Vf-dF3" secondAttribute="leading" constant="20" id="dDD-WD-v9M"/>
                             <constraint firstItem="wXx-Rq-yEM" firstAttribute="leading" secondItem="bRs-Gc-s0H" secondAttribute="trailing" constant="10" id="sfZ-se-der"/>
                         </constraints>
@@ -324,6 +324,7 @@
                         <outlet property="processIndicator" destination="nbS-PW-MZO" id="QPc-VM-VMC"/>
                         <outlet property="processingMessageLabel" destination="0aC-33-3tV" id="ykN-2A-vd0"/>
                         <outlet property="saveButton" destination="hdk-UB-Fwu" id="BOT-2X-ah4"/>
+                        <outlet property="screenTitleLabel" destination="bRs-Gc-s0H" id="LfM-YW-58v"/>
                         <outlet property="successMark" destination="6L5-GD-xI5" id="lcg-0C-Psa"/>
                     </connections>
                 </viewController>

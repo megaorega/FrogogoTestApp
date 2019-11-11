@@ -14,6 +14,8 @@ class ContactEditViewModel: BaseViewModel {
     }
     
     // MARK: - Properties
+    let screenTitle:Box<String> = Box(value: "")
+    
     let firstName:Box<String>   = Box(value: "")
     let lastName:Box<String>    = Box(value: "")
     let email:Box<String>       = Box(value: "")
@@ -38,9 +40,14 @@ class ContactEditViewModel: BaseViewModel {
     override func handlePassedObject(value: Any?) {
         super.handlePassedObject(value: value)
         
-        guard let passedContactModel = value as! ContactModel? else { return }
-        currentModel = passedContactModel
-        setContactModelDataToDisplay()
+        if let passedContactModel = value as! ContactModel? {
+            currentModel = passedContactModel
+            setContactModelDataToDisplay()
+            screenTitle.value = "Edit contact"
+            
+        } else {
+            screenTitle.value = "Add contact"
+        }
     }
     
     override func subscribeForNotifications() {
