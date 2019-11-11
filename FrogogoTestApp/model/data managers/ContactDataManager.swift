@@ -24,8 +24,9 @@ class ContactDataManager: BaseDataManager {
                 for jsonData in response!.arrayValue {
                     parsedContacts.append(ContactModel(withJSON: jsonData))
                 }
-                self.contactList = parsedContacts
                 
+                self.contactList = parsedContacts
+                self.sortContactsByUpdateDate()
                 self.post(notification: .contactListFetchingOK, withPayload: self.contactList)
                 self.post(notification: .contactListUpdated, withPayload: self.contactList)
                 
@@ -79,6 +80,7 @@ class ContactDataManager: BaseDataManager {
                 print("\(type(of: self)): User changes saved!")
                 
                 editedContact.update(withJSON: response!)
+                self.sortContactsByUpdateDate()
                 self.post(notification: .contactEditSaveOK, withPayload: editedContact)
                 self.post(notification: .contactListUpdated, withPayload: self.contactList)
                 
@@ -87,6 +89,14 @@ class ContactDataManager: BaseDataManager {
                 // TODO: need to handle error properly
                 self.post(notification: .contactEditSaveFail)
             }
+        }
+    }
+    
+    
+    // MARK: - Custom private methods
+    private func sortContactsByUpdateDate() {
+        self.contactList.sort { (oneContact, otherContact) -> Bool in
+            return oneContact.updated! > otherContact.updated!
         }
     }
 }

@@ -13,6 +13,7 @@ class ContactModel: BaseDataModel {
     var lastName    = ""
     var email       = ""
     var avatarURL   = ""
+    var updated:Date?
     
     // MARK: Computed properties
     var fullName:String {
@@ -36,5 +37,10 @@ class ContactModel: BaseDataModel {
         lastName  = jsonData["last_name"].stringValue
         email     = jsonData["email"].stringValue
         avatarURL = jsonData["avatar_url"].stringValue
+        
+        let rawUpdatedDateString = jsonData["updated_at"].stringValue
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
+        updated = dateFormatter.date(from: rawUpdatedDateString)!
     }
 }
