@@ -7,6 +7,9 @@ import UIKit
 
 class BaseViewController: UIViewController {
     // MARK: - Properties
+    /**
+     This property using to do some common operations with ViewModel
+     */
     var commonTypeViewModel:BaseViewModel!
     
     
@@ -56,7 +59,7 @@ class BaseViewController: UIViewController {
         fatalError("Do not call super in createViewModel() implementation")
     }
     
-    /** Override this method to react for view model's value changes
+    /** Override this method to bind reactions for view model's value changes
     */
     func addBindings() {
         

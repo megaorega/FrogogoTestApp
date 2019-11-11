@@ -7,7 +7,13 @@ import Foundation
 
 class BaseViewModel {
     // MARK: - Properties
+    /**
+     This object will be passed to next screen's ViewModel when segue performed
+     */
     var passingObject:Any? = nil
+    /**
+     This object was passed to this ViewModel from previous screen's ViewModel
+     */
     var passedObject:Box<Any?>  = Box(value: nil)
     
     
@@ -28,7 +34,7 @@ class BaseViewModel {
     
     // MARK: - Custom public/internal methods
     /**
-     Override this method for handle passed object from one view model to another. Super implementation does nothing
+     This method called when passedObject's value changed. Override this method for handle passed object from one view model to another. Super implementation does nothing
      */
     func handlePassedObject(value:Any?) {
         
@@ -41,6 +47,9 @@ class BaseViewModel {
         // default implementation does nothing
     }
     
+    /**
+     Convenience method for subscribing to Notifications from default NotificationCenter
+     */
     func subscribeFor(notification: Notification.Name, onComplete: Selector) {
         NotificationCenter.default.addObserver(self, selector: onComplete, name: notification, object: nil)
     }

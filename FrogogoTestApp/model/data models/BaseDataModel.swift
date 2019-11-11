@@ -22,7 +22,8 @@ class BaseDataModel {
     
     // MARK: - Custom open/public/internal methods
     /**
-     Override this method to parse your model from JSON object
+     Default implementation does nothing. Override this method to parse your model from JSON object
+     - Parameter jsonData: SwiftyJSON JSON object must contain data for parsing
      */
     func update(withJSON jsonData:JSON) {
         // default implementation does nothing

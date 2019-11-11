@@ -13,6 +13,9 @@ typealias CompleteHandler = (_ isOK:Bool, _ response:JSON?) -> Void
 
 
 
+/**
+ A wrapper class for network module
+ */
 class APIConnector {
     // MARK: - Properties
     static let shared = APIConnector()
