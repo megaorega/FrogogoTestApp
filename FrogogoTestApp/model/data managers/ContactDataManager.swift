@@ -17,8 +17,34 @@ class ContactDataManager: BaseDataManager {
         // TODO: need to send real request
         let fakeContacts = generateFakeContacts()
         // TODO: need to remove fake delay below
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {[unowned self] in
             self.post(notification: .contactListFetchingOK, withPayload: fakeContacts)
+        }
+    }
+    
+    func createContactWith(firstName:String, lastName:String, andEmail email:String) {
+        print("Creating contact:")
+        print("\t" + firstName)
+        print("\t" + lastName)
+        print("\t" + email)
+        let createdContact = ContactModel()
+        createdContact.firstName = firstName
+        createdContact.lastName  = lastName
+        createdContact.email     = email
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {[unowned self] in
+            self.post(notification: .contactCreationOK, withPayload: createdContact)
+        }
+    }
+    
+    func save(newFirstName:String, newLastName:String, andNewEmail newEmail:String, forContact editedContact:ContactModel) {
+        print("Saving contact data")
+        editedContact.firstName = newFirstName
+        editedContact.lastName  = newLastName
+        editedContact.email     = newEmail
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {[unowned self] in
+            self.post(notification: .contactEditSaveOK, withPayload: editedContact)
         }
     }
     

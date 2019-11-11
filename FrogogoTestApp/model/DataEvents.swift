@@ -14,7 +14,7 @@ extension Notification.Name {
     static let contactCreationOK    = Notification.Name("contactCreationOK")
     static let contactCreationFail  = Notification.Name("contactCreationFail")
     
-    // MARK: Contact edit notifications
-    static let contactEditOK    = Notification.Name("contactEditOK")
-    static let contactEditFail  = Notification.Name("contactEditFail")
+    // MARK: Contact edit save notifications
+    static let contactEditSaveOK    = Notification.Name("contactEditSaveOK")
+    static let contactEditSaveFail  = Notification.Name("contactEditSaveFail")
 }

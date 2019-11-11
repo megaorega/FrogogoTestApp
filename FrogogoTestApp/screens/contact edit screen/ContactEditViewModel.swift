@@ -6,6 +6,13 @@
 import Foundation
 
 class ContactEditViewModel: BaseViewModel {
+    enum ProcessingState:Int {
+        case noActivity
+        case inProgress
+        case success
+        case error
+    }
+    
     // MARK: - Properties
     let firstName:Box<String>   = Box(value: "")
     let lastName:Box<String>    = Box(value: "")
@@ -15,6 +22,8 @@ class ContactEditViewModel: BaseViewModel {
     let showLastNameAsInvalid:Box<Bool>  = Box(value: false)
     let showEmailAsInvalid:Box<Bool>     = Box(value: false)
     let saveButtonShouldBeEnabled:Box<Bool> = Box(value: false)
+    let processingState:Box<ProcessingState> = Box(value: .noActivity)
+    let processingMessage:Box<String> = Box(value: "")
     
     private var currentModel:ContactModel!
     private var enteredFirstName:String = ""
@@ -32,6 +41,15 @@ class ContactEditViewModel: BaseViewModel {
         guard let passedContactModel = value as! ContactModel? else { return }
         currentModel = passedContactModel
         setContactModelDataToDisplay()
+    }
+    
+    override func subscribeForNotifications() {
+        super.subscribeForNotifications()
+        
+        subscribeFor(notification: .contactCreationOK, onComplete: #selector(handleNotifContactCreationOK))
+        subscribeFor(notification: .contactCreationFail, onComplete: #selector(handleNotifContactCreationFail))
+        subscribeFor(notification: .contactEditSaveOK, onComplete: #selector(handleNotifContactEditOK))
+        subscribeFor(notification: .contactEditSaveFail, onComplete: #selector(handleNotifContactEditFail))
     }
     
     
@@ -83,11 +101,18 @@ class ContactEditViewModel: BaseViewModel {
     }
     
     internal func triggerSaveAttempt() {
-        // TODO: need to call real DataManager to save data
-        print("Need to save entered data")
-        print("\t\(enteredFirstName)")
-        print("\t\(enteredLastName)")
-        print("\t\(enteredEmail)")
+        processingState.value = .inProgress
+        
+        if (currentModel != nil) {
+            ContactDataManager.shared.save(newFirstName: enteredFirstName,
+                                            newLastName: enteredLastName,
+                                            andNewEmail: enteredEmail,
+                                             forContact: currentModel)
+        } else {
+            ContactDataManager.shared.createContactWith(firstName: enteredFirstName,
+                                                         lastName: enteredLastName,
+                                                         andEmail: enteredEmail)
+        }
     }
     
     
@@ -111,5 +136,39 @@ class ContactEditViewModel: BaseViewModel {
                                           enteredFirstName.isValidFirstName &&
                                           enteredLastName.isValidLastName &&
                                           enteredEmail.isValidEmail
+    }
+    
+    private func resetProcessingState(after delay:DispatchTimeInterval) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {[unowned self] in
+            self.processingState.value = .noActivity
+            self.updateSaveButtonAvailability()
+        }
+    }
+    
+    
+    
+    // MARK: - Notification handlers
+    @objc func handleNotifContactCreationOK() {
+        processingMessage.value = "New contact was created"
+        processingState.value = .success
+    }
+    
+    @objc func handleNotifContactCreationFail(_ notif:Notification) {
+        // TODO: need to show real error message
+        processingMessage.value = "Failed to create contact"
+        processingState.value = .error
+        resetProcessingState(after: .seconds(3))
+    }
+    
+    @objc func handleNotifContactEditOK() {
+        processingMessage.value = "Changes was saved"
+        processingState.value = .success
+    }
+    
+    @objc func handleNotifContactEditFail(_ notif:Notification) {
+        // TODO: need to show real error message
+        processingMessage.value = "Failed to save changes"
+        processingState.value = .error
+        resetProcessingState(after: .seconds(3))
     }
 }

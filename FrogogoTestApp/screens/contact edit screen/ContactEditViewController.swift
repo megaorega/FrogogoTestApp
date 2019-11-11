@@ -13,7 +13,12 @@ class ContactEditViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet var lastNameFieldHint:UILabel!
     @IBOutlet var emailField:UITextField!
     @IBOutlet var emailFieldHint:UILabel!
+    
     @IBOutlet var saveButton:UIButton!
+    @IBOutlet var processIndicator:UIActivityIndicatorView!
+    @IBOutlet var successMark:UIImageView!
+    @IBOutlet var errorMark:UIImageView!
+    @IBOutlet var processingMessageLabel:UILabel!
     
     private let viewModel = ContactEditViewModel()
     
@@ -56,6 +61,29 @@ class ContactEditViewController: BaseViewController, UITextFieldDelegate {
         
         viewModel.saveButtonShouldBeEnabled.bind {[unowned self] needToEnable in
             self.saveButton.isEnabled = needToEnable
+        }
+        
+        viewModel.processingState.bind { [unowned self] newState in
+            if (newState == .inProgress) {
+                self.processIndicator.startAnimating()
+            } else {
+                self.processIndicator.stopAnimating()
+            }
+            
+            self.successMark.isHidden = (newState != .success)
+            self.errorMark.isHidden   = (newState != .error)
+            self.saveButton.isHidden  = (newState != .noActivity)
+            self.processingMessageLabel.isHidden = !((newState == .success) || (newState == .error))
+            
+            if (newState == .success) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {[unowned self] in
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
+        
+        viewModel.processingMessage.bind { [unowned self] newMessage in
+            self.processingMessageLabel.text = newMessage
         }
     }
     

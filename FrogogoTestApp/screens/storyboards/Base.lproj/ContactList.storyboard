@@ -143,7 +143,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6gb-N1-Qe4">
-                                <rect key="frame" x="20" y="81" width="374" height="298"/>
+                                <rect key="frame" x="20" y="81" width="374" height="388"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HJA-Ti-LNP" userLabel="firstNameField">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="35"/>
@@ -155,7 +155,7 @@
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First name can't be empty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4V-WR-GQR" userLabel="firstNameHintLabel">
-                                        <rect key="frame" x="0.0" y="40" width="374" height="16"/>
+                                        <rect key="frame" x="5" y="40" width="364" height="16"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                         <color key="textColor" red="0.79378924571292497" green="0.33066082254691637" blue="0.28301795874829083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -177,7 +177,7 @@
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last name can't be empty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6Z-Sn-bBT" userLabel="lastNameHintLabel">
-                                        <rect key="frame" x="0.0" y="126" width="374" height="16"/>
+                                        <rect key="frame" x="5" y="126" width="364" height="16"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                         <color key="textColor" red="0.79378924571292497" green="0.33066082254691637" blue="0.28301795874829083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -199,7 +199,7 @@
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email is not valid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFP-Sh-Kln" userLabel="emailHintLabel">
-                                        <rect key="frame" x="0.0" y="212" width="374" height="16"/>
+                                        <rect key="frame" x="5" y="212" width="364" height="16"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                         <color key="textColor" red="0.79378924571292497" green="0.33066082254691637" blue="0.28301795874829083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -228,15 +228,49 @@
                                             <action selector="handleSaveBtnTap" destination="d1n-Oe-FKa" eventType="touchUpInside" id="0YC-Dq-bJQ"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="nbS-PW-MZO" userLabel="processingIndicator">
+                                        <rect key="frame" x="167" y="303" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="H26-nh-o5d"/>
+                                            <constraint firstAttribute="width" secondItem="nbS-PW-MZO" secondAttribute="height" multiplier="1:1" id="X0D-HO-wPf"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="HjD-vc-1KA">
+                                        <rect key="frame" x="128" y="348" width="118.5" height="40"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6L5-GD-xI5" userLabel="successMark">
+                                                <rect key="frame" x="0.0" y="0.5" width="30" height="39"/>
+                                                <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="Pib-7S-gEC"/>
+                                                    <constraint firstAttribute="height" constant="40" id="qkE-a8-cA5"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exclamationmark.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SIK-hT-yza" userLabel="errorMark">
+                                                <rect key="frame" x="36" y="0.5" width="30" height="39"/>
+                                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="KAX-WE-Hy9"/>
+                                                    <constraint firstAttribute="width" constant="30" id="c50-s6-5Is"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="255" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" text="Saved!" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="0aC-33-3tV" userLabel="processingMessage">
+                                                <rect key="frame" x="72" y="11" width="46.5" height="18"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="U4V-WR-GQR" firstAttribute="leading" secondItem="HJA-Ti-LNP" secondAttribute="leading" id="2dg-Qd-hRn"/>
+                                    <constraint firstItem="U4V-WR-GQR" firstAttribute="leading" secondItem="HJA-Ti-LNP" secondAttribute="leading" constant="5" id="2dg-Qd-hRn"/>
                                     <constraint firstItem="3vM-qH-vGB" firstAttribute="leading" secondItem="6gb-N1-Qe4" secondAttribute="leading" id="3KB-Or-eXJ"/>
                                     <constraint firstItem="25s-vT-asp" firstAttribute="leading" secondItem="6gb-N1-Qe4" secondAttribute="leading" id="D3J-zO-FZz"/>
-                                    <constraint firstItem="u6Z-Sn-bBT" firstAttribute="leading" secondItem="Mvz-oQ-26q" secondAttribute="leading" id="D6V-x2-buh"/>
-                                    <constraint firstItem="eFP-Sh-Kln" firstAttribute="leading" secondItem="fmL-Cl-uyk" secondAttribute="leading" id="Q63-bW-xBb"/>
+                                    <constraint firstItem="u6Z-Sn-bBT" firstAttribute="leading" secondItem="Mvz-oQ-26q" secondAttribute="leading" constant="5" id="D6V-x2-buh"/>
+                                    <constraint firstItem="eFP-Sh-Kln" firstAttribute="leading" secondItem="fmL-Cl-uyk" secondAttribute="leading" constant="5" id="Q63-bW-xBb"/>
                                     <constraint firstItem="HJA-Ti-LNP" firstAttribute="leading" secondItem="6gb-N1-Qe4" secondAttribute="leading" id="TF6-Vr-DM2"/>
-                                    <constraint firstItem="u6Z-Sn-bBT" firstAttribute="trailing" secondItem="Mvz-oQ-26q" secondAttribute="trailing" id="WSH-df-USQ"/>
+                                    <constraint firstItem="u6Z-Sn-bBT" firstAttribute="trailing" secondItem="Mvz-oQ-26q" secondAttribute="trailing" constant="-5" id="WSH-df-USQ"/>
                                     <constraint firstItem="jYl-7G-Z6A" firstAttribute="trailing" secondItem="6gb-N1-Qe4" secondAttribute="trailing" id="X7L-1S-TSa"/>
                                     <constraint firstItem="3vM-qH-vGB" firstAttribute="trailing" secondItem="6gb-N1-Qe4" secondAttribute="trailing" id="Xut-F2-U6a"/>
                                     <constraint firstItem="fmL-Cl-uyk" firstAttribute="trailing" secondItem="HJA-Ti-LNP" secondAttribute="trailing" id="Zco-9v-gKs"/>
@@ -244,9 +278,9 @@
                                     <constraint firstItem="Mvz-oQ-26q" firstAttribute="trailing" secondItem="HJA-Ti-LNP" secondAttribute="trailing" id="jqG-Yv-OQJ"/>
                                     <constraint firstItem="Mvz-oQ-26q" firstAttribute="leading" secondItem="HJA-Ti-LNP" secondAttribute="leading" id="lub-Uq-huI"/>
                                     <constraint firstItem="HJA-Ti-LNP" firstAttribute="trailing" secondItem="6gb-N1-Qe4" secondAttribute="trailing" id="mON-Y0-4Tc"/>
-                                    <constraint firstItem="eFP-Sh-Kln" firstAttribute="trailing" secondItem="fmL-Cl-uyk" secondAttribute="trailing" id="nSq-VS-2wn"/>
+                                    <constraint firstItem="eFP-Sh-Kln" firstAttribute="trailing" secondItem="fmL-Cl-uyk" secondAttribute="trailing" constant="-5" id="nSq-VS-2wn"/>
                                     <constraint firstItem="25s-vT-asp" firstAttribute="trailing" secondItem="6gb-N1-Qe4" secondAttribute="trailing" id="r4R-lH-Rqy"/>
-                                    <constraint firstItem="U4V-WR-GQR" firstAttribute="trailing" secondItem="HJA-Ti-LNP" secondAttribute="trailing" id="rOy-uL-kGo"/>
+                                    <constraint firstItem="U4V-WR-GQR" firstAttribute="trailing" secondItem="HJA-Ti-LNP" secondAttribute="trailing" constant="-5" id="rOy-uL-kGo"/>
                                     <constraint firstItem="jYl-7G-Z6A" firstAttribute="leading" secondItem="6gb-N1-Qe4" secondAttribute="leading" id="x7Z-Tr-rMm"/>
                                 </constraints>
                             </stackView>
@@ -282,11 +316,15 @@
                     <connections>
                         <outlet property="emailField" destination="fmL-Cl-uyk" id="wty-8z-gMq"/>
                         <outlet property="emailFieldHint" destination="eFP-Sh-Kln" id="wJp-Dj-rS9"/>
+                        <outlet property="errorMark" destination="SIK-hT-yza" id="RWA-eN-AkU"/>
                         <outlet property="firstNameField" destination="HJA-Ti-LNP" id="6h2-Dr-u36"/>
                         <outlet property="firstNameFieldHint" destination="U4V-WR-GQR" id="o2E-Sb-VXY"/>
                         <outlet property="lastNameField" destination="Mvz-oQ-26q" id="ZTw-In-yJO"/>
                         <outlet property="lastNameFieldHint" destination="u6Z-Sn-bBT" id="S9M-Yk-pf8"/>
+                        <outlet property="processIndicator" destination="nbS-PW-MZO" id="QPc-VM-VMC"/>
+                        <outlet property="processingMessageLabel" destination="0aC-33-3tV" id="ykN-2A-vd0"/>
                         <outlet property="saveButton" destination="hdk-UB-Fwu" id="BOT-2X-ah4"/>
+                        <outlet property="successMark" destination="6L5-GD-xI5" id="lcg-0C-Psa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RIw-hN-rZD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -300,6 +338,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark.circle" catalog="system" width="64" height="60"/>
+        <image name="exclamationmark.circle" catalog="system" width="64" height="60"/>
         <image name="person.crop.circle" catalog="system" width="64" height="60"/>
         <image name="plus" catalog="system" width="64" height="56"/>
         <image name="xmark" catalog="system" width="64" height="56"/>
