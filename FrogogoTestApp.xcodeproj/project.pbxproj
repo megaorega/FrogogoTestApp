@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		67562B1923779DD3000C60CB /* ContactEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67562B1823779DD3000C60CB /* ContactEditViewModel.swift */; };
+		675AD4E5237979DF0070AE6F /* APIConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675AD4E4237979DF0070AE6F /* APIConnector.swift */; };
 		67885A4E237747F200631F61 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67885A4D237747F200631F61 /* ContactCell.swift */; };
 		67885A5123774C2E00631F61 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67885A5023774C2E00631F61 /* Box.swift */; };
 		67885A5323774D2900631F61 /* ContactListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67885A5223774D2900631F61 /* ContactListViewModel.swift */; };
@@ -27,10 +28,12 @@
 		67F4572E2376E3E4001FD596 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4572D2376E3E4001FD596 /* BaseViewModel.swift */; };
 		67F457302376E57B001FD596 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4572F2376E57B001FD596 /* ContactListViewController.swift */; };
 		67F457322376E58C001FD596 /* ContactEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F457312376E58C001FD596 /* ContactEditViewController.swift */; };
+		9A55C1234DF5322BDD7554F8 /* Pods_FrogogoTestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F0020EA5AC9448316B3D6D7 /* Pods_FrogogoTestApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		67562B1823779DD3000C60CB /* ContactEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactEditViewModel.swift; sourceTree = "<group>"; };
+		675AD4E4237979DF0070AE6F /* APIConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConnector.swift; sourceTree = "<group>"; };
 		67885A4D237747F200631F61 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		67885A5023774C2E00631F61 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		67885A5223774D2900631F61 /* ContactListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewModel.swift; sourceTree = "<group>"; };
@@ -52,6 +55,9 @@
 		67F4572D2376E3E4001FD596 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		67F4572F2376E57B001FD596 /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 		67F457312376E58C001FD596 /* ContactEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactEditViewController.swift; sourceTree = "<group>"; };
+		6ACCEF589A4548B451A12DA8 /* Pods-FrogogoTestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrogogoTestApp.debug.xcconfig"; path = "Target Support Files/Pods-FrogogoTestApp/Pods-FrogogoTestApp.debug.xcconfig"; sourceTree = "<group>"; };
+		6F0020EA5AC9448316B3D6D7 /* Pods_FrogogoTestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrogogoTestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC0EE27D0239A2876C6052FA /* Pods-FrogogoTestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrogogoTestApp.release.xcconfig"; path = "Target Support Files/Pods-FrogogoTestApp/Pods-FrogogoTestApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A55C1234DF5322BDD7554F8 /* Pods_FrogogoTestApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +94,7 @@
 		67885A5523774DC600631F61 /* connectors */ = {
 			isa = PBXGroup;
 			children = (
+				675AD4E4237979DF0070AE6F /* APIConnector.swift */,
 			);
 			path = connectors;
 			sourceTree = "<group>";
@@ -105,6 +113,8 @@
 			children = (
 				67F4570D2376D2BA001FD596 /* FrogogoTestApp */,
 				67F4570C2376D2BA001FD596 /* Products */,
+				C4CA44D5EFC128F592FC51E1 /* Pods */,
+				A622699F814EC1158610DDB1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -181,6 +191,23 @@
 			path = storyboards;
 			sourceTree = "<group>";
 		};
+		A622699F814EC1158610DDB1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6F0020EA5AC9448316B3D6D7 /* Pods_FrogogoTestApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C4CA44D5EFC128F592FC51E1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6ACCEF589A4548B451A12DA8 /* Pods-FrogogoTestApp.debug.xcconfig */,
+				DC0EE27D0239A2876C6052FA /* Pods-FrogogoTestApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -188,9 +215,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 67F4571F2376D2BC001FD596 /* Build configuration list for PBXNativeTarget "FrogogoTestApp" */;
 			buildPhases = (
+				1FC22768D01369E571C48C31 /* [CP] Check Pods Manifest.lock */,
 				67F457072376D2BA001FD596 /* Sources */,
 				67F457082376D2BA001FD596 /* Frameworks */,
 				67F457092376D2BA001FD596 /* Resources */,
+				FB3AB938D436995FF86AB96F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -247,11 +276,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1FC22768D01369E571C48C31 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FrogogoTestApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB3AB938D436995FF86AB96F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FrogogoTestApp/Pods-FrogogoTestApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FrogogoTestApp/Pods-FrogogoTestApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FrogogoTestApp/Pods-FrogogoTestApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		67F457072376D2BA001FD596 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				675AD4E5237979DF0070AE6F /* APIConnector.swift in Sources */,
 				67885A5C23774E7800631F61 /* BaseDataManager.swift in Sources */,
 				67885A5323774D2900631F61 /* ContactListViewModel.swift in Sources */,
 				67F4570F2376D2BA001FD596 /* AppDelegate.swift in Sources */,
@@ -410,6 +482,7 @@
 		};
 		67F457202376D2BC001FD596 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6ACCEF589A4548B451A12DA8 /* Pods-FrogogoTestApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -427,6 +500,7 @@
 		};
 		67F457212376D2BC001FD596 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC0EE27D0239A2876C6052FA /* Pods-FrogogoTestApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
