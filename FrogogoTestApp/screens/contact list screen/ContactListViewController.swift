@@ -4,6 +4,7 @@
 // Copyright © 2019 Oleg Mosyagin. All rights reserved.
 
 import UIKit
+import SDWebImage
 
 class ContactListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: - Properties
@@ -80,7 +81,7 @@ class ContactListViewController: BaseViewController, UITableViewDataSource, UITa
         
         cell.nameLabel.text  = contactModel.fullName
         cell.emailLabel.text = contactModel.email
-        // TODO: need to show avatar image from URL
+        cell.avatarImage.sd_setImage(with: URL(string: contactModel.avatarURL), placeholderImage: UIImage(systemName: "person.crop.circle"))
         
         return cell
     }

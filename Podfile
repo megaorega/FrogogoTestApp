@@ -7,7 +7,7 @@ target 'FrogogoTestApp' do
 
   # Pods for FrogogoTestApp
   pod 'Alamofire'
-  pod 'AlamofireImage'
+  pod 'SDWebImage'
   pod 'SwiftyJSON'
 
 end
