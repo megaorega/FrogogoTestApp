@@ -121,6 +121,7 @@
                     </view>
                     <connections>
                         <outlet property="contactListTable" destination="bui-wH-vmF" id="fap-Ew-jXy"/>
+                        <outlet property="screenTitleLabel" destination="oc5-yV-c71" id="Ni0-Jq-7Nc"/>
                         <segue destination="d1n-Oe-FKa" kind="presentation" identifier="segueFromContactListToEditContact" modalTransitionStyle="coverVertical" id="Xcr-Rp-VZB"/>
                     </connections>
                 </viewController>

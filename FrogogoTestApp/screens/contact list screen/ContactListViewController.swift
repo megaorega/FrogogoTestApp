@@ -8,6 +8,7 @@ import SDWebImage
 
 class ContactListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: - Properties
+    @IBOutlet var screenTitleLabel:UILabel!
     @IBOutlet var contactListTable:UITableView!
     let refreshControl = UIRefreshControl()
     
@@ -30,6 +31,11 @@ class ContactListViewController: BaseViewController, UITableViewDataSource, UITa
     }
     
     override func addBindings() {
+        super.addBindings()
+        
+        viewModel.screenTitle.bind {[unowned self] newScreenTitle in
+            self.screenTitleLabel.text = newScreenTitle
+        }
         viewModel.segueIdentifierToPerform.bind {[unowned self] segueID in
             guard let segueToPerform = segueID else { return }
             self.performSegue(withIdentifier: segueToPerform, sender: self)

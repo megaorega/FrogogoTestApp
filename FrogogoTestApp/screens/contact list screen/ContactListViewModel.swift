@@ -7,6 +7,8 @@ import Foundation
 
 class ContactListViewModel: BaseViewModel {
     // MARK: - Properties
+    let screenTitle:Box<String> = Box(value: "")
+    
     let contactList:Box<[ContactModel]> = Box(value: [])
     let refreshStatusString:Box<String> = Box(value: "")
     let refreshingActive:Box<Bool>      = Box(value: false)
@@ -18,6 +20,7 @@ class ContactListViewModel: BaseViewModel {
     override func viewWillAppearTrigger() {
         super.viewWillAppearTrigger()
         
+        updateScreenTitle()
         triggerContactsRefreshing()
     }
     
@@ -49,6 +52,20 @@ class ContactListViewModel: BaseViewModel {
     
     
     
+    // MARK: - Custom private methods
+    private func updateScreenTitle() {
+        var updatedScreenTitle = "Contacts"
+        
+        let contactListCount = contactList.value.count
+        if (contactListCount > 0) {
+            updatedScreenTitle += ": \(contactListCount)"
+        }
+        
+        screenTitle.value = updatedScreenTitle
+    }
+    
+    
+    
     // MARK: - Notifications handling
     @objc func handleNotifContactListFetchingOK(_ notification:Notification) {
         let updatedContactList = notification.userInfo![BaseDataManager.notificationPayloadKey] as! [ContactModel]
@@ -57,6 +74,7 @@ class ContactListViewModel: BaseViewModel {
         refreshStatusString.value = ""
         //refreshStatusString.value = NSLocalizedString("up to date", comment:"Refresh control title for updated state")
         refreshingActive.value    = false
+        updateScreenTitle()
     }
     
     @objc func handleNotifContactListFetchingFail(_ notification:Notification) {
